@@ -69,7 +69,11 @@ class WorkflowAdmin(AdminParentClass):
                 self.slug = True
 
     def get_urls(self):
-        from django.conf.urls.defaults import patterns, url
+        from django import VERSION as django_version
+        if django_version >= (1, 5, 0):
+            from django.conf.urls import patterns, url
+        else:
+            from django.conf.urls.defaults import patterns, url
         info = self.model._meta.app_label, self.model._meta.module_name
         
         def wrap(view):

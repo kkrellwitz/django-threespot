@@ -1,6 +1,10 @@
 from datetime import date, timedelta
 from django.conf import settings
-from django.conf.urls.defaults import include, patterns
+from django import VERSION as django_version
+if django_version >= (1, 5, 0):
+    from django.conf.urls import patterns, url
+else:
+    from django.conf.urls.defaults import patterns, url
 from django.core.urlresolvers import reverse
 from django.contrib import admin
 from django.contrib.auth.models import User
