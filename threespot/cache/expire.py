@@ -2,6 +2,7 @@ from django.core.urlresolvers import reverse
 from django.http import HttpRequest
 from django.utils.cache import get_cache_key
 from django.core.cache import cache
+from django import VERSION as django_version
 if django_version >= (1, 5, 0):
     from hashlib import md5 as md5_constructor
 else:
