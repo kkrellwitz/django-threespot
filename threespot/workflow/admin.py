@@ -16,7 +16,10 @@ from django.db.models.fields.related import RelatedField
 from django.http import Http404, HttpResponseBadRequest, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render_to_response
 from django.utils.encoding import force_unicode
-from django.utils.functional import update_wrapper
+try:
+    from django.utils.functional import update_wrapper
+except ImportError:
+    from functools import update_wrapper
 from django.utils.html import escape
 from django.utils.translation import ugettext_lazy as _
 
