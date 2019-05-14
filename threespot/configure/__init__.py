@@ -56,8 +56,8 @@ class SettingsManager(object):
         setting_name = self.namespace + setting_name
         if required and not default:
             if not hasattr(settings, setting_name):
-                raise ImproperlyConfigured, (
+                raise ImproperlyConfigured((
                 "%s must be set to use this django application."         
-                ) % setting_name
+                ) % setting_name)
         self.registry[setting_name] = getattr(settings, setting_name, default)
         return self.registry[setting_name]
