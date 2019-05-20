@@ -58,7 +58,7 @@ def invalidate_template_cache(fragment_name, *variables):
 
     invalidate_template_cache("user_cache", user.id)
     """
-    args = md5_constructor(u':'.join([urlquote(unicode(v)) for v in variables]))
+    args = md5_constructor(':'.join([urlquote(str(v)) for v in variables]))
     cache_key = 'template.cache.%s.%s' % (fragment_name, args.hexdigest())
     cache.delete(cache_key)
     return cache_key

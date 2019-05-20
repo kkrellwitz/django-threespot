@@ -39,13 +39,13 @@ class Command(BaseCommand):
                 app_settings.SOURCE_LOCATION,
                 app_settings.PUBLISH_PATH
             ])
-        except subprocess.CalledProcessError, e:
+        except subprocess.CalledProcessError as e:
             self.stdout.write((
                 "Docs failed to publish to: %s Are you sure that the "
                 "documents source location is correct and the publish path "
                 "is writable?\n"
             )% app_settings.PUBLISH_PATH)
-        except OSError, e:
+        except OSError as e:
             if e[0] == 2:
                 err = (
                     "Error: sphinx-build could not be found. Are you sure "

@@ -73,7 +73,7 @@ def published_object_detail(request, queryset, object_id=None, slug=None,
         {template_object_name: obj,}, 
         context_processors
     )
-    for key, value in extra_context.items():
+    for key, value in list(extra_context.items()):
         if callable(value):
             c[key] = value()
         else:

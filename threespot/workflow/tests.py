@@ -78,9 +78,8 @@ class WorkflowTest(TestCase):
     test_password = 'testrunner'
 
     def _disable_csrf_middleware(self):
-        settings.MIDDLEWARE_CLASSES = filter(lambda m: 'CsrfMiddleware' \
-            not in m, settings.MIDDLEWARE_CLASSES
-        )
+        settings.MIDDLEWARE_CLASSES = [m for m in settings.MIDDLEWARE_CLASSES if 'CsrfMiddleware' \
+            not in m]
         self.csrf_disabled = True
 
     def _setup_admin(self):

@@ -15,7 +15,7 @@ def annotate(**kwargs):
     
     """
     def _wrapped_view_func(fn):
-        for property, value in kwargs.items():
+        for property, value in list(kwargs.items()):
             setattr(fn, property, value)
         return fn
     return _wrapped_view_func

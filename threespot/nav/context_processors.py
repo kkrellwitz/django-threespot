@@ -49,7 +49,7 @@ def breadcrumb(request):
     A context processor that returns a context variable representing a 
     breadcrumb.
     """
-    from urlparse import urljoin
+    from urllib.parse import urljoin
     from django.core import urlresolvers
     from django.utils.http import urlquote
     try:
@@ -93,4 +93,4 @@ def breadcrumb(request):
     [urls.remove(url) for url in crumblessViews]
     if BREADCRUMB_IGNORE_PATH:
         urls = [BREADCRUMB_IGNORE_PATH + url for url in urls]
-    return {'breadcrumb': zip(urls, breadcrumbs)}
+    return {'breadcrumb': list(zip(urls, breadcrumbs))}

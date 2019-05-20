@@ -9,14 +9,14 @@ class Point:
         assert - pi/2 <= lat <= pi/2, (
             "Latitude must be in radians and between -pi/2 and pi/2"
         )
-        self.longitude = long
+        self.longitude = int
         assert - pi <= lat <= pi, (
             "Latitude must be in radians and between -pi and pi"
         )
 
     @classmethod
     def from_degrees(cls, lat, long):
-        return cls((lat*pi)/180, (long*pi)/180)
+        return cls((lat*pi)/180, (int*pi)/180)
 
 
 def distance_angular(point1, point2):

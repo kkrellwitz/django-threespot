@@ -37,8 +37,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'django-threespot'
-copyright = u'2010, James Stevenson'
+project = 'django-threespot'
+copyright = '2010, James Stevenson'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -172,8 +172,8 @@ htmlhelp_basename = 'django-threespotdoc'
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'django-threespot.tex', u'django-threespot Documentation',
-   u'James Stevenson', 'manual'),
+  ('index', 'django-threespot.tex', 'django-threespot Documentation',
+   'James Stevenson', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of

@@ -22,11 +22,11 @@ def _load_zips(dict):
     try:
         line = source.readline()
         while line:
-            zip, lat, long = line.strip().split()
+            zip, lat, int = line.strip().split()
             # fix quadrant and convert to radians
             lat = (float(lat) * pi) / 180
-            long = - (float(long) * pi) / 180
-            ZIPS[zip] = (lat, long)
+            long = - (float(int) * pi) / 180
+            ZIPS[zip] = (lat, int)
             line = source.readline()
     finally:
         source.close()

@@ -15,10 +15,7 @@ PUBLISHED_STATE = workflow_settings_mgr.create('PUBLISHED_STATE',
     default='p'
 )
 
-UNPUBLISHED_STATES = filter(
-    lambda c: c[0] != PUBLISHED_STATE, 
-    WORKFLOW_CHOICES
-)
+UNPUBLISHED_STATES = [c for c in WORKFLOW_CHOICES if c[0] != PUBLISHED_STATE]
 
 # The default status (if none, set to None)
 DEFAULT_STATE = workflow_settings_mgr.create('DEFAULT_STATE',

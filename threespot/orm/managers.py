@@ -64,7 +64,7 @@ def manager_from(*mixins, **kwds):
                 raise TypeError('Mixin must be class or function, not %s' %
                                 mixin.__class__)
     # create the QuerySet subclass
-    id = hash(mixins + tuple(kwds.iteritems()))
+    id = hash(mixins + tuple(kwds.items()))
     new_queryset_cls = type('Queryset_%d' % id, tuple(bases), methods)
     # create the Manager subclass
     bases[0] = manager_cls = kwds.get('manager_cls', Manager)

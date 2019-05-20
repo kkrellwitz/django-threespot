@@ -286,7 +286,7 @@ class WorkflowAdmin(AdminParentClass):
             edit_copy_url = None
             generic_refs = get_generic_referencing_objects(obj)
             direct_refs = get_referencing_objects(obj)
-            object_refs = [(unicode(o), o._meta.verbose_name) for o in \
+            object_refs = [(str(o), o._meta.verbose_name) for o in \
                 chain(direct_refs, generic_refs)
             ]
             
@@ -351,8 +351,8 @@ class WorkflowAdmin(AdminParentClass):
         # that will also be deleted when this copy is deleted.
         generic_refs = get_generic_referencing_objects(obj.copy_of)
         direct_refs = get_referencing_objects(obj.copy_of)
-        direct_refs = filter(lambda o: obj != o, direct_refs)
-        object_refs = [(unicode(o), o._meta.verbose_name) for o in \
+        direct_refs = [o for o in direct_refs if obj != o]
+        object_refs = [(str(o), o._meta.verbose_name) for o in \
             chain(direct_refs, generic_refs)
         ]
         perms_needed = False
@@ -434,10 +434,7 @@ class WorkflowAdmin(AdminParentClass):
     def _merge_item(self, original, draft_copy):
         """ Delete original, clean up and publish copy."""
         # Handle FK and M2M references.
-        refs = filter(
-            lambda obj: obj != draft_copy,
-            get_referencing_objects(original)
-        )
+        refs = [obj for obj in get_referencing_objects(original) if obj != draft_copy]
         for ref in refs:
             field_names = lookup_referencing_object_relationships(original, ref)
             for field_name in field_names:

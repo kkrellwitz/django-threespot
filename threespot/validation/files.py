@@ -14,7 +14,7 @@ def validate_file_size(file, max_size_kb=1024, label='file'):
     max_size_bytes = (max_size_kb * 1024)
     if file.size > max_size_bytes:
         fs = get_readable_file_size(max_size_bytes)
-        raise forms.ValidationError, (
+        raise forms.ValidationError((
             "At %s, this %s is too large. %s is the maximum size "
             "allowed for any %s."
         ) % (
@@ -22,7 +22,7 @@ def validate_file_size(file, max_size_kb=1024, label='file'):
             label,
             get_readable_file_size(max_size_bytes),
             label,
-        )
+        ))
 
 # A common use-case, planned for:
 validate_image_size = partial(validate_file_size, label='image')
@@ -34,7 +34,7 @@ def validate_image_dimensions(image_file, required_width, required_height):
     """
     width, height = get_image_dimensions(image_file)
     if width != required_width or height != required_height:
-        raise forms.ValidationError, (
+        raise forms.ValidationError((
             "Images must be %d pixels wide and %d pixels high; This "
             "image is %d pixels wide and %d pixels high."
-        ) % (required_width, required_height, width, height)
+        ) % (required_width, required_height, width, height))

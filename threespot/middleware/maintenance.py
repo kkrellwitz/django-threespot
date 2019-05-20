@@ -29,9 +29,9 @@ class MaintenanceModeMiddleware:
         if hasattr(settings, 'EXPECTED_UPTIME'):
             uptime = settings.EXPECTED_UPTIME
             if not isinstance(uptime, datetime):
-                raise ImproperlyConfigured, (
+                raise ImproperlyConfigured((
                     "EXPECTED_UPTIME must be a datetime object."
-                )
+                ))
             diff = uptime - datetime.now()
             uptoday = diff.days == 0
             # If delta is negative, we've already passed the expected 

@@ -1,6 +1,6 @@
 from django import forms
 
-from app_settings import UNPUBLISHED_STATES, PUBLISHED_STATE
+from .app_settings import UNPUBLISHED_STATES, PUBLISHED_STATE
 
 class WorkflowAdminFormMixin(forms.ModelForm):
     

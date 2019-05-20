@@ -8,7 +8,7 @@ except ImportError:
 from django.utils.safestring import mark_safe
 from django.utils.translation import get_language
 
-from palettes import full_pallete
+from .palettes import full_pallete
 
 CKEDITOR_PATH = getattr(settings, 'THREESPOT_CKEDITOR_PATH', '')
 if not CKEDITOR_PATH.endswith("/"):
@@ -48,7 +48,7 @@ class CKEditor(forms.Textarea):
         # If the width attribute of the widget is set, we'll need to add a
         # hack for webkit browsers, otherwise, CKEditor toolbar floats will
         # not clear properly.
-        if self.ck_attrs.has_key('width'):
+        if 'width' in self.ck_attrs:
             self.webkit_css_hack = "{ width: %s; }" % self.ck_attrs['width']
         else:
             self.webkit_css_hack = ''
@@ -56,7 +56,7 @@ class CKEditor(forms.Textarea):
         if not 'language' in self.ck_attrs:
             self.ck_attrs['language'] = get_language()[:2]
         dict_items = []
-        for k,v in self.ck_attrs.iteritems():
+        for k,v in list(self.ck_attrs.items()):
             dict_items.append(k + " : " + simplejson.dumps(v))
         ck_attrs += ",\n".join(dict_items)
         return ck_attrs
