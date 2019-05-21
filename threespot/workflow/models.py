@@ -29,7 +29,7 @@ class BaseWorkflowMixin(models.Model):
     """
     An abstract model mixin that can be used provide a publication status.
     """
-    copy_of = models.OneToOneField('self', blank=True, null=True)
+    copy_of = models.OneToOneField('self', blank=True, null=True, on_delete=models.CASCADE)
     objects = WorkflowManager()
     
     class Meta:
