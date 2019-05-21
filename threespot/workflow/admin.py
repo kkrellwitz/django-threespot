@@ -6,16 +6,15 @@ from django.contrib import admin
 from django.contrib.admin import helpers
 from django.contrib.admin.models import LogEntry
 from django.contrib.admin.options import csrf_protect_m
-from django.contrib.admin.util import unquote
-from django.contrib.contenttypes import generic
+from django.contrib.admin.utils import unquote
 from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import PermissionDenied
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.db import models, transaction
 from django.db.models.fields.related import RelatedField
 from django.http import Http404, HttpResponseBadRequest, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render_to_response
-from django.utils.encoding import force_unicode
+from django.utils.encoding import force_text
 try:
     from django.utils.functional import update_wrapper
 except ImportError:
