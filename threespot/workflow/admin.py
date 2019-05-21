@@ -196,7 +196,7 @@ class WorkflowAdmin(AdminParentClass):
         )
 
     @csrf_protect_m
-    @transaction.commit_on_success
+    @transaction.atomic
     @create_revision()
     def copy_view(self, request, object_id, extra_context=None):
         """
@@ -310,7 +310,7 @@ class WorkflowAdmin(AdminParentClass):
         )    
 
     @csrf_protect_m
-    @transaction.commit_on_success
+    @transaction.atomic
     @create_revision()
     def merge_view(self, request, object_id, extra_context=None):
         """
